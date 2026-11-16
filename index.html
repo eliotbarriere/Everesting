@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!-- saved from url=(0125)file:///C:/Users/J1178948/AppData/Local/Temp/MicrosoftEdgeDownloads/fa988c7a-3aaf-490c-a261-82d42bc2f635/everesting-open.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Everesting Planner</title>
+<link rel="stylesheet" href="./Everesting Planner_files/leaflet.min.css">
+<link rel="stylesheet" href="./Everesting Planner_files/css2">
+<style>
+:root{--paper:#f1f3f2;--ink:#1d2b3a;--mu:#5d6b75;--line:#d5dadc;--ac:#e8590c;--ac2:#0b6e99}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Barlow,system-ui,sans-serif}
+h1,h2,.num{font-family:"Barlow Semi Condensed",Barlow,sans-serif}
+header{max-width:1000px;margin:0 auto;padding:20px 16px 12px;display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between}
+h1{font-size:30px;line-height:1.05;margin:0;font-weight:700}
+h1 small{display:block;font:400 15px Barlow;color:var(--mu);margin-top:4px}
+.search{position:relative;flex:1 1 320px;max-width:460px}
+input{width:100%;padding:10px 12px;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:6px}
+input:focus-visible,button:focus-visible{outline:3px solid var(--ac2);outline-offset:1px}
+#res{position:absolute;left:0;right:0;top:100%;background:#fff;border:1px solid var(--line);border-radius:6px;margin-top:4px;z-index:1000;box-shadow:0 8px 24px rgba(29,43,58,.15)}
+#res button{display:block;width:100%;text-align:left;border:0;background:none;padding:9px 12px;font:inherit;cursor:pointer;border-bottom:1px solid var(--line)}
+#res button:hover{background:var(--paper)}#res button:last-child{border:0}
+#res:empty{display:none}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+#map{height:min(58vh,480px);border-radius:8px;border:1px solid var(--line)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 0}
+.tools p{margin:0 8px 0 0;color:var(--mu);font-size:14px;flex:1 1 260px}
+button.b{font:500 14px Barlow;padding:7px 12px;border-radius:6px;border:1px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer}
+button.b.p{background:var(--ink);color:#fff}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 40px;margin-top:28px}
+section{border-top:2px solid var(--ink);padding:10px 0 28px}
+h2{font-size:20px;margin:0 0 12px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px 18px}
+.k{font-size:13px;color:var(--mu)}
+.num{font-size:34px;font-weight:700;line-height:1.05;display:block}
+.hero .num{font-size:56px;color:var(--ac)}
+#prof{width:100%;height:auto;display:block;margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:6px}
+label{display:block;font-size:13px;color:var(--mu);margin-bottom:3px}
+.warn{color:#a4310a;font-size:14px;margin:8px 0 0;min-height:1.2em}
+.note{font-size:13px;color:var(--mu);margin:10px 0 0}
+</style>
+</head>
+<body class="">
+<header>
+<h1>Everesting Planner<small>Trace une côte, vois le profil réel, calcule tes montées.</small></h1>
+<div class="search">
+<label for="q">Chercher un lieu</label>
+<input id="q" placeholder="rue Lepic, Paris" autocomplete="off">
+<div id="res"></div>
+</div>
+</header>
+
+<div class="wrap">
+<div id="map" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-665px, 395.441px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(-703px, 15px, 0px) scale(1);"><img alt="" src="./Everesting Planner_files/image.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(974px, -352px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(974px, -608px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(718px, -352px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1230px, -352px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(974px, -96px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(718px, -608px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1230px, -608px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(718px, -96px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1230px, -96px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(9).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1486px, -352px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(10).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1486px, -608px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(11).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1486px, -96px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(12).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1742px, -352px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(13).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1742px, -608px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(14).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1742px, -96px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(15).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1998px, -352px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(16).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1998px, -608px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(17).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1998px, -96px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(18).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2254px, -608px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(19).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2254px, -352px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(20).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1742px, -864px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(21).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1486px, -864px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(22).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1998px, -864px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(23).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1230px, -864px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(24).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2254px, -864px, 0px); opacity: 1;"><img alt="" src="./Everesting Planner_files/image(25).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2254px, -96px, 0px); opacity: 1;"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(-199px, 51px, 0px) scale(2);"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"><svg pointer-events="none" class="leaflet-zoom-animated" width="1160" height="379" viewBox="568 -427 1160 379" style="transform: translate3d(568px, -427px, 0px);"><g><path class="leaflet-interactive" stroke="#e8590c" stroke-opacity="1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M568 -352L777 -321L824 -304L1001 -181L1030 -174L1086 -178L1114 -189L1154 -231L1164 -252L1226 -253L1247 -247"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#2e9e4f" fill-opacity="1" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M0 0"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M603,-346a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M773,-321a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M820,-304a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M997,-181a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M1026,-174a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M1082,-178a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M1110,-189a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M1120,-199a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M1150,-231a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M1160,-252a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#e8590c" fill-opacity="1" fill-rule="evenodd" d="M1222,-253a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#d62828" fill-opacity="1" fill-rule="evenodd" d="M1240,-247a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path></g></svg></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(3.39905e+07px, 2.30788e+07px, 0px) scale(131072);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="file:///C:/Users/J1178948/AppData/Local/Temp/MicrosoftEdgeDownloads/fa988c7a-3aaf-490c-a261-82d42bc2f635/everesting-open.html#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="file:///C:/Users/J1178948/AppData/Local/Temp/MicrosoftEdgeDownloads/fa988c7a-3aaf-490c-a261-82d42bc2f635/everesting-open.html#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-layers leaflet-control" aria-haspopup="true"><a class="leaflet-control-layers-toggle" href="file:///C:/Users/J1178948/AppData/Local/Temp/MicrosoftEdgeDownloads/fa988c7a-3aaf-490c-a261-82d42bc2f635/everesting-open.html#" title="Layers" role="button"></a><section class="leaflet-control-layers-list"><div class="leaflet-control-layers-base"><label><span><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_43" checked="checked"><span> Plan IGN (France)</span></span></label><label><span><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_43"><span> Esri (monde)</span></span></label><label><span><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_43"><span> Photos aériennes IGN</span></span></label><label><span><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_43"><span> OSM (si hébergé en https)</span></span></label></div><div class="leaflet-control-layers-separator" style="display: none;"></div><div class="leaflet-control-layers-overlays"></div></section></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © IGN</div></div></div></div>
+<div class="tools">
+<p id="hint">Clique sur la carte pour poser le départ en bas de la côte, puis les points jusqu’au sommet.</p>
+<button class="b p" id="snap">Aligner sur les routes</button>
+<button class="b" id="undo">Annuler le dernier point</button>
+<button class="b" id="rev">Inverser le sens</button>
+<button class="b" id="clear">Effacer</button>
+</div>
+
+<div class="cols">
+<section class="hero">
+<h2>Ta montée</h2>
+<div class="row">
+<div><span class="k">montées pour l’objectif</span><span class="num" id="laps">153</span></div>
+<div><span class="k">distance totale</span><span class="num" id="dist">141.6 km</span></div>
+</div>
+<div class="row" style="margin-top:14px">
+<div><span class="k">longueur</span><span class="num" id="len" style="font-size:26px">926 m</span></div>
+<div><span class="k">dénivelé</span><span class="num" id="gain" style="font-size:26px">60 m</span></div>
+<div><span class="k">pente moyenne</span><span class="num" id="grade" style="font-size:26px">6.4 %</span></div>
+<div><span class="k">pente max sur 50 m</span><span class="num" id="gmax" style="font-size:26px">9.0 %</span></div>
+</div>
+<svg id="prof" viewBox="0 0 600 150" role="img" aria-label="Profil altimétrique"><polygon points="44,128 44.0,128.0 49.9,127.5 55.8,126.7 61.8,125.7 67.7,124.5 73.6,123.4 79.5,122.2 85.4,120.9 91.4,119.7 97.3,118.5 103.2,117.2 109.1,115.9 115.1,114.8 121.0,113.6 126.9,112.4 132.8,111.1 138.7,109.9 144.7,108.6 150.6,107.4 156.5,106.2 162.4,105.0 168.3,103.7 174.3,102.4 180.2,101.1 186.1,99.8 192.0,98.6 197.3,97.7 203.3,97.0 209.2,96.5 215.1,96.1 221.0,95.6 227.0,95.0 232.9,94.4 238.8,93.7 244.7,93.0 250.6,92.1 256.2,91.2 262.2,90.3 268.1,89.2 274.0,88.1 279.9,87.0 285.8,86.0 291.8,84.8 297.5,83.8 303.4,82.7 309.4,81.3 315.3,79.9 321.2,78.5 327.1,76.8 333.0,75.0 338.8,73.3 344.6,71.6 350.5,69.8 356.4,68.2 362.4,66.6 368.3,65.0 374.2,63.4 380.1,61.8 386.0,60.1 392.0,58.3 397.8,56.7 403.8,55.3 409.7,53.8 415.6,52.3 421.5,50.6 427.4,48.9 433.4,47.0 439.3,45.2 445.2,43.4 451.1,41.7 457.0,39.9 463.0,38.3 468.9,36.7 474.8,35.2 480.7,33.6 486.6,32.1 492.5,30.6 498.4,29.1 504.3,27.6 510.3,26.4 516.2,25.3 522.1,24.3 528.0,23.4 533.9,22.6 539.8,21.5 545.7,20.3 551.6,19.0 557.4,17.5 563.3,15.9 569.2,14.4 574.4,13.0 580.3,11.6 586.2,10.7 592.0,10.0 592,128" fill="#e8590c" opacity=".16"></polygon><polyline points="44.0,128.0 49.9,127.5 55.8,126.7 61.8,125.7 67.7,124.5 73.6,123.4 79.5,122.2 85.4,120.9 91.4,119.7 97.3,118.5 103.2,117.2 109.1,115.9 115.1,114.8 121.0,113.6 126.9,112.4 132.8,111.1 138.7,109.9 144.7,108.6 150.6,107.4 156.5,106.2 162.4,105.0 168.3,103.7 174.3,102.4 180.2,101.1 186.1,99.8 192.0,98.6 197.3,97.7 203.3,97.0 209.2,96.5 215.1,96.1 221.0,95.6 227.0,95.0 232.9,94.4 238.8,93.7 244.7,93.0 250.6,92.1 256.2,91.2 262.2,90.3 268.1,89.2 274.0,88.1 279.9,87.0 285.8,86.0 291.8,84.8 297.5,83.8 303.4,82.7 309.4,81.3 315.3,79.9 321.2,78.5 327.1,76.8 333.0,75.0 338.8,73.3 344.6,71.6 350.5,69.8 356.4,68.2 362.4,66.6 368.3,65.0 374.2,63.4 380.1,61.8 386.0,60.1 392.0,58.3 397.8,56.7 403.8,55.3 409.7,53.8 415.6,52.3 421.5,50.6 427.4,48.9 433.4,47.0 439.3,45.2 445.2,43.4 451.1,41.7 457.0,39.9 463.0,38.3 468.9,36.7 474.8,35.2 480.7,33.6 486.6,32.1 492.5,30.6 498.4,29.1 504.3,27.6 510.3,26.4 516.2,25.3 522.1,24.3 528.0,23.4 533.9,22.6 539.8,21.5 545.7,20.3 551.6,19.0 557.4,17.5 563.3,15.9 569.2,14.4 574.4,13.0 580.3,11.6 586.2,10.7 592.0,10.0" fill="none" stroke="#e8590c" stroke-width="2.5" stroke-linejoin="round"></polyline><text x="4" y="18" font-size="11" fill="#5d6b75">123 m</text><text x="4" y="128" font-size="11" fill="#5d6b75">63 m</text><text x="44" y="145" font-size="11" fill="#5d6b75">0</text><text x="592" y="145" font-size="11" text-anchor="end" fill="#5d6b75">926 m</text></svg>
+<p class="warn" id="status"></p>
+<p class="note" id="src">Altitudes : IGN RGE ALTI</p>
+</section>
+
+<section>
+<h2>Temps et vitesse</h2>
+<div class="row">
+<div><label for="target">Objectif (m D+)</label><input id="target" type="number" value="8848"></div>
+<div><label for="marge">Marge (%)</label><input id="marge" type="number" value="3"></div>
+<div><label for="vu">Vitesse montée (km/h)</label><input id="vu" type="number" step="0.1" value="12"></div>
+<div><label for="vd">Vitesse descente (km/h)</label><input id="vd" type="number" step="0.1" value="35"></div>
+<div><label for="pause">Pauses (min)</label><input id="pause" type="number" value="60"></div>
+<div><label for="tt">Temps visé (h)</label><input id="tt" type="number" step="0.1" placeholder="ex. 14"></div>
+</div>
+<div class="row" style="margin-top:18px">
+<div><span class="k">temps total estimé</span><span class="num" id="total">18 h 31</span></div>
+<div><span class="k">montée</span><span class="num" id="tup" style="font-size:26px">11 h 48</span></div>
+<div><span class="k">descente</span><span class="num" id="tdown" style="font-size:26px">4 h 43</span></div>
+<div><span class="k">vitesse montée requise</span><span class="num" id="need" style="color:var(--ac)">–</span></div>
+</div>
+<p class="note">Avec « Temps visé », la vitesse de montée à tenir est calculée en tenant compte de la descente et des pauses. La marge ajoute un pourcentage à l’objectif, car le D+ de ton compteur peut différer de celui de la carte.</p>
+</section>
+</div>
+</div>
+
+<script src="./Everesting Planner_files/leaflet.min.js.télécharger"></script>
+<script>
+const $=id=>document.getElementById(id);
+const map=L.map('map').setView([48.8847,2.3389],15);
+const esri=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'© Esri, HERE, Garmin, OpenStreetMap contributors'});
+const ortho=L.tileLayer('https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/jpeg',{maxZoom:19,attribution:'© IGN'});
+const ign=L.tileLayer('https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png',{maxZoom:19,attribution:'© IGN'});
+const osm=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'});
+ign.addTo(map);
+L.control.layers({'Plan IGN (France)':ign,'Esri (monde)':esri,'Photos aériennes IGN':ortho,'OSM (si hébergé en https)':osm}).addTo(map);
+const line=L.polyline([],{color:'#e8590c',weight:5}).addTo(map),marks=L.layerGroup().addTo(map);
+let pts=[],T=null,timer=null;
+
+// recherche de lieu (Nominatim / OSM)
+let st;
+$('q').addEventListener('input',()=>{clearTimeout(st);const v=$('q').value.trim();if(v.length<3){$('res').innerHTML='';return}st=setTimeout(()=>search(v),500)});
+async function search(v){
+  try{
+    const r=await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=5&accept-language=fr&q='+encodeURIComponent(v));
+    const j=await r.json();$('res').innerHTML='';
+    j.forEach(p=>{const b=document.createElement('button');b.textContent=p.display_name;
+      b.onclick=()=>{const bb=p.boundingbox.map(Number);map.fitBounds([[bb[0],bb[2]],[bb[1],bb[3]]],{maxZoom:17});$('res').innerHTML='';$('q').value=p.display_name.split(',')[0]};
+      $('res').appendChild(b)});
+  }catch(e){$('res').innerHTML='<button>Recherche indisponible, réessaie.</button>'}
+}
+document.addEventListener('click',e=>{if(!e.target.closest('.search'))$('res').innerHTML=''});
+
+// tracé
+map.on('click',e=>{pts.push([e.latlng.lat,e.latlng.lng]);redraw();queue()});
+function redraw(){
+  line.setLatLngs(pts);marks.clearLayers();
+  pts.forEach((p,i)=>L.circleMarker(p,{radius:i===0||i===pts.length-1?7:4,color:'#fff',weight:2,fillColor:i===0?'#2e9e4f':i===pts.length-1?'#d62828':'#e8590c',fillOpacity:1}).addTo(marks));
+}
+$('undo').onclick=()=>{pts.pop();redraw();queue()};
+$('clear').onclick=()=>{pts=[];T=null;redraw();render()};
+$('rev').onclick=()=>{pts.reverse();redraw();queue()};
+$('snap').onclick=async()=>{
+  if(pts.length<2)return;$('status').textContent='Alignement sur les routes…';
+  try{
+    const c=pts.map(p=>p[1].toFixed(6)+','+p[0].toFixed(6)).join(';');
+    const r=await fetch('https://routing.openstreetmap.de/routed-bike/route/v1/bike/'+c+'?overview=full&geometries=geojson');
+    const j=await r.json();if(!j.routes||!j.routes[0])throw 0;
+    pts=j.routes[0].geometry.coordinates.map(c=>[c[1],c[0]]);redraw();queue();
+  }catch(e){$('status').textContent='Alignement impossible, le tracé manuel est conservé.'}
+};
+function queue(){clearTimeout(timer);timer=setTimeout(analyze,600)}
+
+// géométrie
+function hav(a,b){const R=6371000,r=Math.PI/180,x=Math.sin((b[0]-a[0])*r/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin((b[1]-a[1])*r/2)**2;return 2*R*Math.asin(Math.sqrt(x))}
+function resample(P,step){
+  const out=[P[0]];let carry=0;
+  for(let i=1;i<P.length;i++){
+    const a=P[i-1],b=P[i],d=hav(a,b);let pos=step-carry;
+    while(pos<=d){const t=pos/d;out.push([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]);pos+=step}
+    carry=d-(pos-step);
+  }
+  const l=out[out.length-1],e=P[P.length-1];
+  if(l[0]!==e[0]||l[1]!==e[1])out.push(e);
+  return out;
+}
+
+// altitudes : IGN (RGE ALTI), repli Open-Meteo
+async function eleIGN(c){
+  const u='https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json?lon='+c.map(p=>p[1].toFixed(6)).join('|')+'&lat='+c.map(p=>p[0].toFixed(6)).join('|')+'&resource=ign_rge_alti_wld&zonly=true';
+  const r=await fetch(u);if(!r.ok)throw 0;return (await r.json()).elevations;
+}
+async function eleOM(c){
+  const u='https://api.open-meteo.com/v1/elevation?latitude='+c.map(p=>p[0].toFixed(5)).join(',')+'&longitude='+c.map(p=>p[1].toFixed(5)).join(',');
+  const r=await fetch(u);if(!r.ok)throw 0;return (await r.json()).elevation;
+}
+async function getEle(s){
+  const ch=[];for(let i=0;i<s.length;i+=80)ch.push(s.slice(i,i+80));
+  try{
+    const o=(await Promise.all(ch.map(eleIGN))).flat();
+    if(o.length!==s.length||o.some(v=>v===null||v<-500))throw 0;
+    return [o,'Altitudes : IGN RGE ALTI'];
+  }catch(e){
+    const o=(await Promise.all(ch.map(eleOM))).flat();
+    return [o,'Altitudes : Open-Meteo (Copernicus, 90 m), peu précis sur les courtes côtes'];
+  }
+}
+
+async function analyze(){
+  if(pts.length<2){T=null;render();return}
+  let tot=0;for(let i=1;i<pts.length;i++)tot+=hav(pts[i-1],pts[i]);
+  if(tot<20){$('status').textContent='Tracé trop court.';return}
+  const s=resample(pts,Math.max(10,tot/300));
+  $('status').textContent='Récupération des altitudes…';
+  try{
+    const [raw,src]=await getEle(s);
+    const d=[0];for(let i=1;i<s.length;i++)d.push(d[i-1]+hav(s[i-1],s[i]));
+    const e=raw.map((v,i)=>{const a=raw[Math.max(0,i-2)],b=raw[Math.max(0,i-1)],c=raw[Math.min(raw.length-1,i+1)],f=raw[Math.min(raw.length-1,i+2)];return (a+b+v+c+f)/5});
+    let g=0,l=0;for(let i=1;i<e.length;i++){const x=e[i]-e[i-1];if(x>0)g+=x;else l-=x}
+    let gm=0;for(let i=0,j=0;i<e.length;i++){while(j<e.length-1&&d[j]-d[i]<50)j++;if(d[j]-d[i]>=40)gm=Math.max(gm,(e[j]-e[i])/(d[j]-d[i])*100)}
+    T={d,e,len:d[d.length-1],gain:g,loss:l,gmax:gm,src};
+    $('status').textContent=g<l?'Ce tracé descend : utilise « Inverser le sens » pour aller du bas vers le haut.':'';
+  }catch(err){T=null;$('status').textContent='Altitudes indisponibles pour le moment. Réessaie dans un instant.'}
+  render();
+}
+
+const f=h=>{if(!isFinite(h)||h<=0)return '–';const m=Math.round(h*60);return Math.floor(m/60)+' h '+String(m%60).padStart(2,'0')};
+function render(){
+  if(!T){['laps','dist','len','gain','grade','gmax','total','tup','tdown','need'].forEach(i=>$(i).textContent='–');$('prof').innerHTML='';$('src').textContent='';return}
+  const net=T.e[T.e.length-1]-T.e[0],gain=T.gain;
+  $('len').textContent=Math.round(T.len)+' m';
+  $('gain').textContent=Math.round(gain)+' m';
+  $('grade').textContent=(net/T.len*100).toFixed(1)+' %';
+  $('gmax').textContent=T.gmax.toFixed(1)+' %';
+  $('src').textContent=T.src;
+  const tgt=(+$('target').value||0)*(1+(+$('marge').value||0)/100);
+  const n=gain>1?Math.ceil(tgt/gain):NaN,km=n*T.len/1000;
+  $('laps').textContent=isFinite(n)?n:'–';$('dist').textContent=isFinite(km)?km.toFixed(1)+' km':'–';
+  const vu=+$('vu').value,vd=+$('vd').value,p=(+$('pause').value||0)/60;
+  const up=km/vu,dn=km/vd;
+  $('tup').textContent=f(up);$('tdown').textContent=f(dn);$('total').textContent=f(up+dn+p);
+  const tt=+$('tt').value;
+  if(tt>0&&isFinite(km)){const av=tt-dn-p;$('need').textContent=av>0?(km/av).toFixed(1)+' km/h':'impossible'}else $('need').textContent='–';
+  // profil
+  const W=600,H=150,pl=44,pb=22,pt=10,pr=8;
+  const mn=Math.min(...T.e),mx=Math.max(...T.e),r=Math.max(mx-mn,1);
+  const X=v=>pl+v/T.len*(W-pl-pr),Y=v=>H-pb-(v-mn)/r*(H-pb-pt);
+  const pp=T.e.map((v,i)=>X(T.d[i]).toFixed(1)+','+Y(v).toFixed(1)).join(' ');
+  $('prof').innerHTML='<polygon points="'+X(0)+','+(H-pb)+' '+pp+' '+X(T.len)+','+(H-pb)+'" fill="#e8590c" opacity=".16"/>'
+   +'<polyline points="'+pp+'" fill="none" stroke="#e8590c" stroke-width="2.5" stroke-linejoin="round"/>'
+   +'<text x="4" y="'+(pt+8)+'" font-size="11" fill="#5d6b75">'+Math.round(mx)+' m</text>'
+   +'<text x="4" y="'+(H-pb)+'" font-size="11" fill="#5d6b75">'+Math.round(mn)+' m</text>'
+   +'<text x="'+pl+'" y="'+(H-5)+'" font-size="11" fill="#5d6b75">0</text>'
+   +'<text x="'+(W-pr)+'" y="'+(H-5)+'" font-size="11" text-anchor="end" fill="#5d6b75">'+Math.round(T.len)+' m</text>';
+}
+['target','marge','vu','vd','pause','tt'].forEach(i=>$(i).addEventListener('input',render));
+</script>
+
+
+</body></html>
